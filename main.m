@@ -8,7 +8,7 @@ peakNum = [2,2,4,2,8,32,2,8,32,10,4,4,2,10,8,24,16,64];
 radius = [0.5*ones(1,9), 0.05*ones(1,9)];
 accuracy = [0.1; 0.01; 0.001; 0.0001; 0.00001];
 
-runs=2;
+runs=25;
 
 for func_num=1:18
     filename = "result"+num2str(func_num)+".txt";

@@ -8,8 +8,11 @@ peakNum = [2,2,4,2,8,32,2,8,32,10,4,4,2,10,8,24,16,64];
 radius = [0.5*ones(1,9), 0.05*ones(1,9)];
 accuracy = [0.1; 0.01; 0.001; 0.0001; 0.00001];
 
-runs=25;
+runs=2;
+
 for func_num=1:18
+    filename = "result"+num2str(func_num)+".txt";
+    fileID = fopen(filename,'a');
     problem.func_num=func_num;
     peak_num = peakNum(func_num);
     problem.dim = Dims(func_num);
@@ -22,6 +25,7 @@ for func_num=1:18
         for i = 1:5
             [count, finalseeds] = count_goptima(population, problem, accuracy(i));
             fprintf('f_%d, the peak ratio of run %d with accuracy=%f is %f!\n', func_num,j,accuracy(i),count/peak_num);
+            fprintf(fileID,'f_%d %d %f %f\n', func_num,j,accuracy(i),count/peak_num);
         end
     end
 end
